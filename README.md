@@ -221,8 +221,10 @@ graph TD
     Clients -- "Chooses Service Provider" --> Vendors
     Virio <-. "Competes With" .-> Vendors
     Clients -- "Shares Generated Content" --> Audience
-    Audience -.-> "Influences Content KPIs<br/>(Views, Watch Time, Authenticity Perception)" -.-> Virio
-    Audience -.-> "Influences Content Success" -.-> Clients
+    
+    %% Fix for the influence relationships
+    Audience -. "Influences Content KPIs" .-> Virio
+    Audience -. "Influences Content Success" .-> Clients
 
     %% Styling
     classDef platform fill:#cce5ff,stroke:#004080,stroke-width:2px;
