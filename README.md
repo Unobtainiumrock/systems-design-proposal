@@ -202,35 +202,42 @@ What it means to be human is immutable. What changes over time is the social con
 ```mermaid
 graph TD
     subgraph "Core Actors"
-        Virio["Virio<br/>(AI Content Platform)"]
-        Clients["Clients<br/>(Service Users / Data Sources)"]
+        Virio["fa:fa-robot Virio<br/>(AI Content Platform)"]
+        Clients["fa:fa-building Clients<br/>(Service Users / Data Sources)"]
     end
 
     subgraph "Market Context"
-        Vendors["Vendors<br/>(Competitors)"]
+        Vendors["fa:fa-store Vendors<br/>(Competitors)"]
     end
 
     subgraph "Content Ecosystem"
-        Audience["Client's Audience<br/>(Content Consumers / Implicit Stakeholder)"]
+        Audience["fa:fa-users Client's Audience<br/>(Content Consumers / Implicit Stakeholder)"]
     end
 
-    %% Relationships
-    Virio -- "Provides AI Content Service" --> Clients
-    Clients -- "Provides Contextual Data<br/>(Transcripts, etc.)" --> Virio
-    Clients -- "Chooses Service Provider" --> Virio
-    Clients -- "Chooses Service Provider" --> Vendors
-    Virio <-. "Competes With" .-> Vendors
-    Clients -- "Shares Generated Content" --> Audience
-    
-    %% Fix for the influence relationships
-    Audience -. "Influences Content KPIs" .-> Virio
-    Audience -. "Influences Content Success" .-> Clients
+    %% Relationships with descriptive arrows
+    Virio -- "fa:fa-cogs Provides AI Content Service" --> Clients
+    Clients -- "fa:fa-database Provides Contextual Data" --> Virio
+    Clients -- "fa:fa-handshake Chooses Service Provider" --> Virio
+    Clients -- "fa:fa-handshake Chooses Service Provider" --> Vendors
+    Virio <-. "fa:fa-balance-scale Competes With" .-> Vendors
+    Clients -- "fa:fa-share-alt Shares Generated Content" --> Audience
+    Audience -. "fa:fa-chart-line Influences Content KPIs" .-> Virio
+    Audience -. "fa:fa-thumbs-up Influences Content Success" .-> Clients
+
+    %% Data flow highlight
+    Virio -. "fa:fa-magic Content Generation" .-> Clients
 
     %% Styling
     classDef platform fill:#cce5ff,stroke:#004080,stroke-width:2px;
     classDef customer fill:#e5f5e0,stroke:#339933,stroke-width:2px;
     classDef competitor fill:#f9d5e5,stroke:#cc3399,stroke-width:1px,stroke-dasharray: 5 5;
     classDef audience fill:#fff2cc,stroke:#ffaa00,stroke-width:1px,stroke-dasharray: 3 3;
+
+    %% Add shadows for 3D effect
+    classDef platform filter:drop-shadow(3px 3px 2px rgba(0,0,0,.2));
+    classDef customer filter:drop-shadow(3px 3px 2px rgba(0,0,0,.2));
+    classDef competitor filter:drop-shadow(3px 3px 2px rgba(0,0,0,.2));
+    classDef audience filter:drop-shadow(3px 3px 2px rgba(0,0,0,.2));
 
     class Virio platform;
     class Clients customer;
