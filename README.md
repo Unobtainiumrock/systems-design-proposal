@@ -12,6 +12,7 @@ What it means to be human is immutable. What changes over time is the social con
 - [Bonus Thought Exercises](#bonus-thought-exercises)
 - [Action Plan & Prioritization](#action-plan--prioritization)
 - [Stakeholder Map](#stakeholder-map)
+- [Stakeholder Analysis](#stakeholder-analysis)
 
 ## Foundational Concepts & Goal Setting (Relates to Background & Overall Task Goal)
 
@@ -79,7 +80,7 @@ What it means to be human is immutable. What changes over time is the social con
 - **Data Dynamics:** Explore the concept of a "steady state" for client data -- does their core voice/style stabilize, or is it constantly evolving? Investigate how platforms like character.ai do things, and whether or not they provide tooling that can be integrated or leveraged in our solutions
 
 
-## Task Question 5; System Design & Endpoints
+## Task Question 5: System Design & Endpoints
 
 - **Core Components:**
 
@@ -197,7 +198,7 @@ What it means to be human is immutable. What changes over time is the social con
   Explicitly define the required shape and type of data needed from the viral content black box.
 
 
-  ## Stakeholder Map
+## Stakeholder Map
 
 ```mermaid
 graph TD
@@ -237,3 +238,80 @@ graph TD
     class Clients customer;
     class Vendors competitor;
     class Audience audience;
+```
+
+## Stakeholder Analysis
+
+### Key Stakeholders
+
+#### Virio
+- **Role:** The company developing the AI content generation system, serving as the primary actor building and leveraging the "data moat" to create high-quality, personalized content.
+- **Goals:** 
+  - Differentiate from competitors by excelling at creating content with "character, authenticity, heart"
+  - Build and maintain a proprietary data advantage (the "moat")
+  - Develop systems resilient to data drift while preserving human elements
+  - Attract and retain clients through superior content quality
+
+#### Clients
+- **Role:** Users of Virio's service who need personalized, authentic content generation.
+- **Goals:**
+  - Receive high-quality, engaging content that authentically represents their voice
+  - Build their own brand and effectively connect with their audience
+  - Minimize time spent on content creation while maximizing quality
+  - Achieve measurable success with their content (engagement, conversion, etc.)
+- **Value:** The primary source of unique contextual data Virio needs for its data moat
+
+#### Vendors (Competitors)
+- **Role:** Alternative solutions in the market that offer similar content creation services.
+- **Goals:**
+  - Attract clients from the same target market as Virio
+  - Develop competitive features and capabilities
+  - Potentially build their own data advantages
+- **Significance:** Serve as benchmarks against which Virio measures its differentiation strategy
+
+#### Client's Audience
+- **Role:** The ultimate consumers of the generated content; implicit stakeholders who don't directly interact with Virio.
+- **Goals:**
+  - Consume relevant, authentic, and engaging content
+  - Connect with the client's brand or message
+- **Impact:** Their reception and engagement with content ultimately determines success metrics and influences Virio's approach
+
+### Key Relationships
+
+#### Virio ⟷ Clients
+- **Service Provision:** Virio provides AI-powered content generation tailored to each client's unique voice and needs
+- **Data Exchange:** Clients provide essential contextual data (transcripts, presentations, existing content) that powers Virio's personalization capabilities
+- **Trust Dynamic:** The relationship depends on client willingness to share sensitive contextual data in exchange for high-quality outputs
+- **Value Proposition:** A key tension exists around whether the service itself is sufficient compensation for client data, or if additional financial incentives are needed
+- **Selection Criteria:** Clients choose Virio based on content quality, authenticity, and effectiveness compared to alternatives
+
+#### Virio ⟷ Vendors
+- **Competitive Positioning:** Virio aims to outperform competitors by focusing on "human" elements of content that traditional AI might miss
+- **Differentiation Strategy:** The "data moat" serves as a key competitive advantage, allowing Virio to offer more personalized and authentic content
+- **Market Dynamics:** Competition drives innovation in metrics, algorithms, and approaches to content generation
+- **Client Acquisition:** Both Virio and Vendors compete for the same client base, necessitating clear value differentiation
+
+#### Clients ⟷ Vendors
+- **Service Selection:** Clients have choice between Virio and competitor offerings
+- **Switching Costs:** Potential friction in moving between services based on data already shared and relationships built
+- **Value Assessment:** Clients evaluate services based on quality, cost, authenticity, and measured effectiveness
+
+#### Clients ⟷ Audience
+- **Content Distribution:** Clients share Virio-generated content with their audience
+- **Brand Representation:** The content must authentically represent the client's brand and voice
+- **Success Measurement:** Audience engagement directly impacts the client's perception of Virio's value
+- **Feedback Loop:** Audience reactions inform future content needs and refinements
+
+#### Audience ⟷ Virio (Indirect)
+- **Quality Assessment:** Audience engagement metrics (watch time, shares, comments) indirectly measure Virio's content quality
+- **Content Evolution:** Audience preferences and reactions influence Virio's content algorithms and approaches
+- **KPI Impact:** The audience's perception of authenticity and engagement with content shapes how Virio defines "high quality"
+
+### Implications for System Design
+
+- **Data Collection Strategy:** Must prioritize obtaining rich, contextual data from clients while respecting privacy and providing clear value exchange
+- **Personalization Depth:** The system should leverage client data to create truly distinctive content that captures their unique voice
+- **Feedback Integration:** Audience metrics must flow back to inform content generation approaches
+- **Competitive Awareness:** System should continuously benchmark against competitor capabilities
+- **Trust Building:** Design must emphasize security, privacy, and transparent value to encourage client data sharing
+- **Differentiation Focus:** All system components should enhance the human-like, authentic qualities that distinguish Virio from competitors
