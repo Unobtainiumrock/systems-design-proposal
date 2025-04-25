@@ -233,12 +233,6 @@ graph TD
     classDef competitor fill:#f9d5e5,stroke:#cc3399,stroke-width:1px,stroke-dasharray: 5 5;
     classDef audience fill:#fff2cc,stroke:#ffaa00,stroke-width:1px,stroke-dasharray: 3 3;
 
-    %% Add shadows for 3D effect
-    classDef platform filter:drop-shadow(3px 3px 2px rgba(0,0,0,.2));
-    classDef customer filter:drop-shadow(3px 3px 2px rgba(0,0,0,.2));
-    classDef competitor filter:drop-shadow(3px 3px 2px rgba(0,0,0,.2));
-    classDef audience filter:drop-shadow(3px 3px 2px rgba(0,0,0,.2));
-
     class Virio platform;
     class Clients customer;
     class Vendors competitor;
