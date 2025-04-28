@@ -9,6 +9,8 @@ What it means to be human is immutable. What changes over time is the social con
 - [] Incorporate the entity diagram for data aggregation & storage, with icons for integrations
 - [] Develop user stories to showcase how the memory interface can be customized via groupings of tribal personas
 - [] Practice the elevator pitch for these concepts and consider converting these to a video presentation --feed info on silver platter.
+- [] **Add back in notes on teh trade-offs between virality content vs in-depth and quality content**
+- [] Mention Character.Ai as a potential way to capture the essence & personality of certain users. Investigate if they offer the right kind of integrations
 
 ## Table of Contents
 
