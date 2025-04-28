@@ -692,7 +692,7 @@ Time to reach a predefined virality threshold
 #### Peak Time
 
 Time to reach maximum engagement rate
-  $PT = \argmax_t ER_t$ 
+  $PT = \text{argmax}_t ER_t$ 
   where $ER_t$ is engagement rate at time $t$
 
 
