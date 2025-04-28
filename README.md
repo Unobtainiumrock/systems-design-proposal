@@ -41,7 +41,12 @@ Completed sections are marked with a ✅.
     - [Operational Efficiency](#operational-efficiency)
   - [Client-Facing Metrics](#client-facing-metrics)
     - [Reach & Engagement Metrics](#reach--engagement-metrics)
-    - [Structural Virality Metrics](#structural-virality-metrics)
+    - ✅ [Structural Virality Metrics](#structural-virality-metrics)
+      - ✅ [Cascade Size](#cascade-size-popularityvolume)
+      - ✅ [Structural Virality (Wiener Index)](#structural-virality-wiener-index)
+      - ✅ [Cascade Depth](#cascade-depth)
+      - ✅ [Cascade Breadth](#cascade-breadth)
+      - ✅ [Branching Factor](#branching-factor)
     - [Temporal Dynamics](#temporal-dynamics)
 
 ## Assignment
@@ -701,3 +706,158 @@ Time to reach maximum engagement rate
 Average time between consecutive engagements
   $IET = \frac{1}{n-1}\sum_{i=1}^{n-1}(t_{i+1} - t_i)$ 
   where $t_i$ is time of $i$-th engagement
+
+---
+
+#### Content Consumption Metrics
+
+#### Watch Time
+
+Total time users spend consuming content
+  $WT = \sum_{i \in V} d_i$
+  where $V$ is the set of all views and $d_i$ is the duration of view $i$
+
+```mermaid
+graph LR
+    subgraph "Watch Time Visualization"
+        A["Total Hours<br>Watched: 1,243"]
+        B1["Video 1<br>342 hours"] 
+        B2["Video 2<br>508 hours"]
+        B3["Video 3<br>393 hours"]
+        
+        A --- B1
+        A --- B2
+        A --- B3
+    end
+    
+    classDef total fill:#f96,stroke:#333,stroke-width:2px;
+    classDef video fill:#9cf,stroke:#333,stroke-width:1px;
+    
+    class A total;
+    class B1,B2,B3 video;
+```
+
+**Key Features:**
+- Total accumulated hours watched across all content
+- Breakdown by individual content pieces
+- Comparison to previous time periods
+- Correlation with platform algorithm boost metrics
+
+#### Average View Duration
+
+Average time a viewer spends consuming a piece of content
+  $AVD = \frac{\sum_{i \in V} d_i}{|V|}$
+  where $V$ is the set of all views and $d_i$ is the duration of view $i$
+
+```mermaid
+graph TD
+    subgraph "Average View Duration"
+        A["4:32<br>Average Time"]
+        
+        subgraph "Retention Curve"
+            B1["0:00<br>100%"] --> B2["1:00<br>85%"]
+            B2 --> B3["2:00<br>72%"]
+            B3 --> B4["3:00<br>63%"]
+            B4 --> B5["4:00<br>48%"]
+            B5 --> B6["5:00<br>31%"]
+            B6 --> B7["6:00<br>18%"]
+            B7 --> B8["7:00<br>9%"]
+        end
+    end
+    
+    classDef avg fill:#f96,stroke:#333,stroke-width:2px;
+    classDef high fill:#9cf,stroke:#333,stroke-width:1px;
+    classDef med fill:#9fc,stroke:#333,stroke-width:1px;
+    classDef low fill:#fcf,stroke:#333,stroke-width:1px;
+    
+    class A avg;
+    class B1,B2,B3 high;
+    class B4,B5 med;
+    class B6,B7,B8 low;
+```
+
+**Key Features:**
+- Average watch time prominently displayed
+- Visual representation of viewer drop-off points
+- Key moments of increased or decreased retention highlighted
+- Comparison against industry benchmarks
+
+#### Retention Rate
+
+Percentage of content watched before users drop off
+  $RR(t) = \frac{|V_t|}{|V_0|} \times 100\%$
+  where $V_0$ is the initial number of viewers and $V_t$ is viewers at time $t$
+
+```mermaid
+graph TD
+    subgraph "Content Retention Analysis"
+        A["Video Retention<br>63% Average"]
+        
+        subgraph "Key Segments"
+            B1["Intro<br>100-92%"] --> B2["Topic 1<br>92-85%"]
+            B2 --> B3["Topic 2<br>85-64%"]
+            B3 --> B4["Topic 3<br>64-58%"]
+            B4 --> B5["Conclusion<br>58-43%"]
+        end
+        
+        C1["Drop-off<br>Point!"] -.- B3
+    end
+    
+    classDef title fill:#f96,stroke:#333,stroke-width:2px;
+    classDef good fill:#9f9,stroke:#060,stroke-width:1px;
+    classDef medium fill:#ff9,stroke:#660,stroke-width:1px;
+    classDef poor fill:#f99,stroke:#900,stroke-width:1px;
+    classDef alert fill:#f55,stroke:#900,stroke-width:2px,stroke-dasharray: 5 2;
+    
+    class A title;
+    class B1,B2 good;
+    class B4 medium;
+    class B3,B5 poor;
+    class C1 alert;
+```
+
+**Key Features:**
+- Segment-by-segment retention analysis
+- Identification of significant drop-off points
+- Color-coded performance indicators
+- Content structure overlay showing relationship between content segments and retention
+
+#### Conversion Rate
+
+Actions taken post-viewing, such as sign-ups or purchases
+  $CR = \frac{\text{Number of conversions}}{\text{Number of views}} \times 100\%$
+
+```mermaid
+graph TD
+    A[Views<br>10,000] --> B[Engaged<br>2,300]
+    B --> C[Clicked CTA<br>750]
+    C --> D[Started Process<br>320]
+    D --> E[Completed<br>180]
+    
+    subgraph "Conversion Funnel"
+        A
+        B
+        C
+        D
+        E
+    end
+    
+    F["Conversion Rate:<br>1.8%"] -.- E
+    
+    classDef top fill:#9cf,stroke:#333,stroke-width:1px;
+    classDef middle fill:#9fc,stroke:#333,stroke-width:1px;
+    classDef bottom fill:#f96,stroke:#333,stroke-width:1px;
+    classDef stat fill:#f5f5f5,stroke:#333,stroke-width:1px,stroke-dasharray: 5 2;
+    
+    class A,B top;
+    class C,D middle;
+    class E bottom;
+    class F stat;
+```
+
+**Key Features:**
+- Complete conversion funnel visualization
+- Step-by-step drop-off analysis
+- Overall conversion rate calculation
+- Comparison to industry benchmarks
+- Identification of largest drop-off points for optimization
