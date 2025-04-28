@@ -454,8 +454,11 @@ graph TD
 
 #### Structural Virality Metrics
 
-- **Cascade Size (Popularity/Volume):** Total number of users in sharing cascade
-  $CS = |V|$ where $V$ is the set of users in the cascade
+#### Cascade Size (Popularity/Volume)
+
+**Visualization Concept:** Complete Network Spread
+
+Total number of users in sharing cascade: $CS = |V|$ where $V$ is the set of users in the cascade
 
 ```mermaid
   graph TD
@@ -487,8 +490,11 @@ graph TD
 - Color-coded by level
 - Continuous / Dynamic updates as cascade grows
 
+#### Structural Virality (Wiener Index) 🤣
 
-- **Structural Virality (Wiener Index):** 🤣 Average distance between all node pairs
+**Visualization Concept:** Path Distance Heatmap
+
+Average distance between all node pairs
   $W = \frac{1}{|V|(|V|-1)} \sum_{i \in V}\sum_{j \in V, j \neq i} d(i,j)$ 
   where $d(i,j)$ is the shortest path from node $i$ to $j$
 
@@ -521,35 +527,177 @@ graph TD
 - Numerical Weiner index displayed (e.g. "Structural Virality: 2.5")
 - Visual comparison to broadcast v.s. viral diffusion patterns shown as smal reference icons.
 
+#### Cascade Depth
 
-- **Cascade Depth:** Maximum path length in sharing tree
+**Visualization Concept:** Longest Path Highlight
+
+Maximum path length in sharing tree
   $CD = \max_{i \in V} d(r, i)$ 
   where $r$ is the root node and $d(r,i)$ is distance from root to node $i$
 
-- **Cascade Breadth:** Maximum number of shares at any depth level
+```mermaid
+graph TD
+    A[Original Post] --> B1[Share 1]
+    A --> B2[Share 2]
+    A --> B3[Share 3]
+    B1 --> C1[Re-share 1.1]
+    B2 --> C3[Re-share 2.1]
+    B3 --> C4[Re-share 3.1]
+    C1 --> D1[Re-share 1.1.1]
+    D1 --> E1[Re-share 1.1.1.1]
+    
+    classDef original fill:#f96,stroke:#333,stroke-width:2px;
+    classDef regular fill:#ddd,stroke:#333,stroke-width:1px;
+    classDef highlight fill:#f66,stroke:#f00,stroke-width:3px;
+    
+    class A highlight;
+    class B1 highlight;
+    class C1 highlight;
+    class D1 highlight;
+    class E1 highlight;
+    class B2,B3,C3,C4 regular;
+```
+
+**Key Features:**
+- Highlighte longest path from origin to furthest reshare
+- Depth count displayed (e.g. "Cascade Depth: 4 levels")
+- Non-path nodes shown in muted colors
+- Optional depth level labels
+
+
+#### Cascade Breadth
+
+**Visualization Concept:** Level width emphasis
+
+Maximum number of shares at any depth level
   $CB = \max_{l \in L} |N_l|$ 
   where $L$ is the set of levels and $N_l$ is nodes at level $l$
 
-- **Branching Factor:** Average number of shares per user
+```mermaid
+graph TD
+    A[Original Post] --> B1[Share 1]
+    A --> B2[Share 2]
+    A --> B3[Share 3]
+    B1 --> C1[Re-share 1.1]
+    B1 --> C2[Re-share 1.2]
+    B2 --> C3[Re-share 2.1]
+    B3 --> C4[Re-share 3.1]
+    B3 --> C5[Re-share 3.2]
+    B3 --> C6[Re-share 3.3]
+    C6 --> D1[Re-share 3.3.1]
+    
+    subgraph "Level 0"
+        A
+    end
+    subgraph "Level 1 (3 nodes)"
+        B1
+        B2
+        B3
+    end
+    subgraph "Level 2 - Widest Level (6 nodes)"
+        C1
+        C2
+        C3
+        C4
+        C5
+        C6
+    end
+    subgraph "Level 3"
+        D1
+    end
+    
+    classDef original fill:#f96,stroke:#333,stroke-width:2px;
+    classDef regular fill:#ddd,stroke:#333,stroke-width:1px;
+    classDef widest fill:#9cf,stroke:#66f,stroke-width:2px;
+    
+    class A original;
+    class C1,C2,C3,C4,C5,C6 widest;
+    class B1,B2,B3,D1 regular;
+```
+**Key Features:**
+- Nodes arranged in clear horizontal levels
+- Highlighted level with maximum width
+- Width count displayed for each level
+- Maximum breadth emphasized (e.g. "Cascade Breadth: 6 at level 2")
+
+#### Branching Factor
+
+**Visualization Concept:** Node Outgoing Connection Visualization
+
+Average number of shares per user
   $BF = \frac{|E|}{|V|-1}$ 
   where $E$ is the set of edges (shares) and $V$ is the set of vertices (users)
 
+  ```mermaid
+graph TD
+    A[Original Post<br>BF=3.0] --> B1[Share 1<br>BF=2.0]
+    A --> B2[Share 2<br>BF=1.0]
+    A --> B3[Share 3<br>BF=3.0]
+    B1 --> C1[Re-share 1.1<br>BF=0]
+    B1 --> C2[Re-share 1.2<br>BF=0]
+    B2 --> C3[Re-share 2.1<br>BF=0]
+    B3 --> C4[Re-share 3.1<br>BF=0]
+    B3 --> C5[Re-share 3.2<br>BF=0]
+    B3 --> C6[Re-share 3.3<br>BF=1.0]
+    C6 --> D1[Re-share 3.3.1<br>BF=0]
+    
+    classDef noBranch fill:#ddd,stroke:#333,stroke-width:1px;
+    classDef lowBranch fill:#afa,stroke:#333,stroke-width:1px;
+    classDef medBranch fill:#ffa,stroke:#333,stroke-width:1px;
+    classDef highBranch fill:#f96,stroke:#333,stroke-width:2px;
+    
+    class A highBranch;
+    class B3 highBranch;
+    class B1 medBranch;
+    class B2,C6 lowBranch;
+    class C1,C2,C3,C4,C5,D1 noBranch;
+  ```
+
+**Key Features:**
+- Node size proportional to branching factor (outgoing edges)
+- Branching factor labeled on each node
+- Color intensity based on branching factor
+- Average branching factor displayed prominently (e.g. "Average Branching Factor: 1.2")
+
+All of these metrics can be incorporated into a comprehensive dashboard that provides a holistic view of the cascade's structure and dynamics. It can include:
+
+1. A primary combined visualization showing
+  - The complete cascase network
+  - Interactive toggles to highlight each metrics
+  - A time slider to show cascade development over time
+
+2. A side panel with:
+  - Numerical values for each metric
+  - Interpretations of what each value means in terms of cascade structure and virality
+  - Benchmarks against industry averages or competitors
+
 #### Temporal Dynamics
 
-- **Reach Velocity / Diffusion Speed:** Rate of growth in unique viewers over time
+#### Reach Velocity / Diffusion Speed
+
+Rate of growth in unique viewers over time
   $RV = \frac{dR}{dt}$ or discretely $RV = \frac{R_t - R_{t-1}}{\Delta t}$
 
-- **Cascade Lifetime:** Duration from content creation to last significant engagement
+#### Cascade Lifetime
+
+Duration from content creation to last significant engagement
   $CL = t_{last} - t_{0}$ 
   where $t_0$ is start time and $t_{last}$ is time of last engagement
 
-- **Time to Reach Viral Target:** Time to reach a predefined virality threshold
+#### Time to Reach Viral Target
+
+Time to reach a predefined virality threshold
   $TVT = \min\{t : R_t \geq R_{target}\}$
 
-- **Peak Time:** Time to reach maximum engagement rate
+#### Peak Time
+
+Time to reach maximum engagement rate
   $PT = \argmax_t ER_t$ 
   where $ER_t$ is engagement rate at time $t$
 
-- **Inter-Event Time (IET):** Average time between consecutive engagements
+
+#### Inter-Event Time (IET)
+
+Average time between consecutive engagements
   $IET = \frac{1}{n-1}\sum_{i=1}^{n-1}(t_{i+1} - t_i)$ 
   where $t_i$ is time of $i$-th engagement
