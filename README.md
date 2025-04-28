@@ -8,7 +8,7 @@ What it means to be human is immutable. What changes over time is the social con
 - [] Add interpretability sections across all metrics and provide business use-case examples
 - [] Incorporate the entity diagram for data aggregation & storage, with icons for integrations
 - [] Develop user stories to showcase how the memory interface can be customized via groupings of tribal personas
-- 
+- [] Practice the elevator pitch for these concepts and consider converting these to a video presentation --feed info on silver platter.
 
 ## Table of Contents
 
