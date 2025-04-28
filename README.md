@@ -480,10 +480,47 @@ graph TD
     class C1,C2,C3,C4,C5,C6 secondLevel;
     class D1 thirdLevel;
 ```
+**Key Features:**
+- Node count = Total cascase size
+- All nodes and connections visible
+- Simple count display (e.g. "Cascade Size: 11 users reached")
+- Color-coded by level
+- Continuous / Dynamic updates as cascade grows
+
 
 - **Structural Virality (Wiener Index):** 🤣 Average distance between all node pairs
   $W = \frac{1}{|V|(|V|-1)} \sum_{i \in V}\sum_{j \in V, j \neq i} d(i,j)$ 
   where $d(i,j)$ is the shortest path from node $i$ to $j$
+
+
+```mermaid
+graph TD
+    A[Original Post] --> B1[Share 1]
+    A --> B2[Share 2]
+    A --> B3[Share 3]
+    B1 --> C1[Re-share 1.1]
+    B3 --> C4[Re-share 3.1]
+    C1 --> D1[Re-share 1.1.1]
+    D1 --> E1[Re-share 1.1.1.1]
+    
+    classDef original fill:#f96,stroke:#333,stroke-width:2px;
+    classDef close fill:#9cf,stroke:#333,stroke-width:1px;
+    classDef medium fill:#9fc,stroke:#333,stroke-width:1px;
+    classDef far fill:#fcf,stroke:#333,stroke-width:1px;
+    classDef veryfar fill:#f9f,stroke:#333,stroke-width:1px;
+    
+    class A original;
+    class B1,B2,B3 close;
+    class C1,C4 medium;
+    class D1 far;
+    class E1 veryfar;
+```
+**Key Features:**
+- Color intensity based on average path length from origin
+- Path distances labeled on edges
+- Numerical Weiner index displayed (e.g. "Structural Virality: 2.5")
+- Visual comparison to broadcast v.s. viral diffusion patterns shown as smal reference icons.
+
 
 - **Cascade Depth:** Maximum path length in sharing tree
   $CD = \max_{i \in V} d(r, i)$ 
