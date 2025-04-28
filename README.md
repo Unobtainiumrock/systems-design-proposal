@@ -2,6 +2,14 @@
 
 What it means to be human is immutable. What changes over time is the social context in which these traits exist. Data drift is innevitable and thus, we must build a dynamical system that is capable of evolving over time to combat data drift, while simultaneously keeping its core features grounded in the human elements.
 
+## To DO
+
+- [] Convert Reach & Engagement Metrics over to their own subsections and add entity diagrams for each
+- [] Add interpretability sections across all metrics and provide business use-case examples
+- [] Incorporate the entity diagram for data aggregation & storage, with icons for integrations
+- [] Develop user stories to showcase how the memory interface can be customized via groupings of tribal personas
+- 
+
 ## Table of Contents
 
 Completed sections are marked with a ✅.
