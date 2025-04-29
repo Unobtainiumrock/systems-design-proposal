@@ -11,6 +11,7 @@ What it means to be human is immutable. What changes over time is the social con
 - [] Practice the elevator pitch for these concepts and consider converting these to a video presentation --feed info on silver platter.
 - [] **Add back in notes on teh trade-offs between virality content vs in-depth and quality content**
 - [] Mention Character.Ai as a potential way to capture the essence & personality of certain users. Investigate if they offer the right kind of integrations
+- [] Incorporate the foundation needed to integrate systems like GNNs
 
 ## Table of Contents
 
